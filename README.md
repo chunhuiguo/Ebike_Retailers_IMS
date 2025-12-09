@@ -9,4 +9,4 @@ The IMS web application is designed for e-bike retailes and covers the following
 * Reporting & Analytics
 
 ## Architecture
-The system is implemented with Java SSH (Struts + Sprint + Hibernate) architecture, JSP, and Microsoft SQL Server.
+The system is implemented with Java SSH (Struts + Spring + Hibernate) framework, JSP, and Microsoft SQL Server.
