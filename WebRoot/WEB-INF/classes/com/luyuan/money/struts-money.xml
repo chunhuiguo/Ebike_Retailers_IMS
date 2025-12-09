@@ -1,0 +1,176 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.1//EN"
+    "http://struts.apache.org/dtds/struts-2.1.dtd">
+<struts>
+	
+	<package name="money" extends="home" namespace="/money">
+	
+		<!-- wml -->
+		<default-interceptor-ref name="luyuanStack"> </default-interceptor-ref>
+		
+		<action name="payment" class="paymentAct">
+			<result>/WEB-INF/money/payment.jsp</result>
+			<result name="save" type="redirect">/money/draft.html</result>
+			<result name="subAccountDetail" type="redirect">/info/paymentSubAccountList.html</result>
+			<result name="unitDetail" type="redirect">/sys/unitList!list.html?result=payment</result>			
+			<result name="check" type="redirect">/money/courseDetail.html</result>
+			<result name="cancel" type="redirect">/money/paymentInput.html</result>
+			<result name="error">/WEB-INF/home/login.jsp</result>
+		</action>
+		
+		<action name="receipt" class="receiptAct">
+			<result>/WEB-INF/money/receipt.jsp</result>
+			<result name="save" type="redirect">/money/draft.html</result>
+			<result name="subAccountDetail" type="redirect">/info/receiptSubAccountList.html</result>
+			<result name="unitDetail" type="redirect">/sys/unitList!list.html?result=receipt</result>			
+			<result name="check" type="redirect">/money/courseDetail.html</result>
+			<result name="cancel" type="redirect">/money/receiptInput.html</result>
+			<result name="error">/WEB-INF/home/login.jsp</result>			
+		</action>
+		
+		<action name="paymentInput" class="paymentAct" method="paymentInput">
+			<result>/WEB-INF/money/payment.jsp</result>
+		</action>
+		
+		<action name="paymentInfo" class="paymentAct" method="infoBack">
+			<result>/WEB-INF/money/payment.jsp</result>
+		</action>
+		
+		<action name="receiptInfo" class="receiptAct" method="infoBack">
+			<result>/WEB-INF/money/receipt.jsp</result>
+		</action>
+		
+		<action name="receiptInput" class="receiptAct" method="receiptInput">
+			<result>/WEB-INF/money/receipt.jsp</result>			
+		</action>
+		
+		<action name="paymentUpdate" class="paymentAct" method="paymentUpdate">
+			<result>/WEB-INF/money/payment.jsp</result>
+		</action>
+		
+		<action name="receiptUpdate" class="receiptAct" method="receiptUpdate">
+			<result>/WEB-INF/money/receipt.jsp</result>			
+		</action>
+		
+		<action name="paymentDetail" class="paymentAct" method="paymentDetail">
+			<result>/WEB-INF/money/payment.jsp</result>
+		</action>
+		
+		<action name="receiptDetail" class="receiptAct" method="receiptDetail">
+			<result>/WEB-INF/money/receipt.jsp</result>			
+		</action>	
+		 
+		<action name="draft" class="moneyDraftAct" >
+			<result>/WEB-INF/money/draft.jsp</result>
+			<result name="payment" type="redirect">/money/paymentUpdate.html</result>
+			<result name="receipt" type="redirect">/money/receiptUpdate.html</result>
+			<result name="delete" type="redirect">/money/draft.html</result>
+		</action>
+		
+		<action name="courseDetail" class="moneyCourseAct" method="detail">
+			<result>/WEB-INF/money/course.jsp</result >			
+		</action>
+		<action name="courseQuery" class="moneyCourseAct" method="query">
+			<result>/WEB-INF/money/course.jsp</result >			
+		</action>
+		
+		<action name="course" class="moneyCourseAct">
+			<result>/WEB-INF/money/course.jsp</result>
+			<result name="payment" type="redirect">/money/paymentDetail.html</result>
+			<result name="receipt" type="redirect">/money/receiptDetail.html</result>
+			<result name="chargeAgainst" type="redirect">/money/course.html</result>
+			<result name="billQuery" type="redirect">/money/billQueryInput.html</result >
+			
+		</action>
+			
+		<action name="receivable" class="dueBookAct" method="receivable">
+			<result>/WEB-INF/money/receivable.jsp</result>
+			<result name="receivableDetail">/WEB-INF/money/receivableDetail.jsp</result>
+			<result name="dealingBookList" type="redirect">/money/receivableBook.html</result>
+			<result name="pDealingBookList" type="redirect">/money/pReceivableBook.html</result>
+		</action>
+				
+		<action name="receivableBook" class="dueBookAct" method="receivableBook">
+			<result>/WEB-INF/money/receivableBook.jsp</result>
+			<result name="payment">/WEB-INF/money/payment.jsp</result>
+			<result name="receipt">/WEB-INF/money/receipt.jsp</result>
+			<result name="purchase">/WEB-INF/deal/purchase.jsp</result >
+			<result name="purchaseBack">/WEB-INF/deal/purchaseBack.jsp</result >
+			<result name="sale">/WEB-INF/deal/sale.jsp</result >
+			<result name="saleBack">/WEB-INF/deal/saleBack.html</result >
+			<result name="transferIn">/WEB-INF/deal/transferIn.html</result >
+			<result name="transferOut">/WEB-INF/deal/transferOut.html</result >
+			<result name="loss">/WEB-INF/deal/loss.html</result >
+			<result name="overflow">/WEB-INF/deal/overflow.html</result >
+			<result name="exit">/WEB-INF/money/receivableDetail.jsp</result>
+		</action>
+		
+		<action name="pReceivableBook" class="dueBookAct" method="pReceivableBook">
+			<result>/WEB-INF/money/pReceivableBook.jsp</result>
+			<result name="payment">/WEB-INF/money/payment.jsp</result>
+			<result name="receipt">/WEB-INF/money/receipt.jsp</result>
+			<result name="purchase">/WEB-INF/deal/purchase.jsp</result >
+			<result name="purchaseBack">/WEB-INF/deal/purchaseBack.jsp</result >
+			<result name="sale">/WEB-INF/deal/sale.jsp</result >
+			<result name="saleBack">/WEB-INF/deal/saleBack.html</result >
+			<result name="transferIn">/WEB-INF/deal/transferIn.html</result >
+			<result name="transferOut">/WEB-INF/deal/transferOut.html</result >
+			<result name="loss">/WEB-INF/deal/loss.html</result >
+			<result name="overflow">/WEB-INF/deal/overflow.html</result >
+			<result name="exit">/WEB-INF/money/receivableDetail.jsp</result>
+		</action>
+		
+		<action name="payable" class="dueBookAct" method="payable">
+			<result>/WEB-INF/money/payable.jsp</result>
+			<result name="payableDetail">/WEB-INF/money/payableDetail.jsp</result>
+			<result name="dealingBookList" type="redirect">/money/payableBook.html</result>
+			<result name="pDealingBookList" type="redirect">/money/pPayableBook.html</result>
+		</action>
+		
+		<action name="payableBook" class="dueBookAct" method="payableBook">
+			<result>/WEB-INF/money/payableBook.jsp</result>
+			<result name="payment">/WEB-INF/money/payment.jsp</result>
+			<result name="receipt">/WEB-INF/money/receipt.jsp</result>
+			<result name="purchase">/WEB-INF/deal/purchase.jsp</result >
+			<result name="purchaseBack">/WEB-INF/deal/purchaseBack.jsp</result >
+			<result name="sale">/WEB-INF/deal/sale.jsp</result >
+			<result name="saleBack">/WEB-INF/deal/saleBack.html</result >
+			<result name="transferIn">/WEB-INF/deal/transferIn.html</result >
+			<result name="transferOut">/WEB-INF/deal/transferOut.html</result >
+			<result name="loss">/WEB-INF/deal/loss.html</result >
+			<result name="overflow">/WEB-INF/deal/overflow.html</result >
+			<result name="exit">/WEB-INF/money/payableDetail.jsp</result>
+		</action>		
+		
+		<action name="pPayableBook" class="dueBookAct" method="pPayableBook">
+			<result>/WEB-INF/money/pReceivableBook.jsp</result>
+			<result name="payment">/WEB-INF/money/payment.jsp</result>
+			<result name="receipt">/WEB-INF/money/receipt.jsp</result>
+			<result name="purchase">/WEB-INF/deal/purchase.jsp</result >
+			<result name="purchaseBack">/WEB-INF/deal/purchaseBack.jsp</result >
+			<result name="sale">/WEB-INF/deal/sale.jsp</result >
+			<result name="saleBack">/WEB-INF/deal/saleBack.html</result >
+			<result name="transferIn">/WEB-INF/deal/transferIn.html</result >
+			<result name="transferOut">/WEB-INF/deal/transferOut.html</result >
+			<result name="loss">/WEB-INF/deal/loss.html</result >
+			<result name="overflow">/WEB-INF/deal/overflow.html</result >
+			<result name="exit">/WEB-INF/money/payableDetail.jsp</result>
+		</action>		
+		
+		
+		<action name="billQueryInput" class="billQueryAct" method="input">
+			<result>/WEB-INF/money/billQuery.jsp</result >			
+		</action>
+		<action name="billQueryInfoBack" class="billQueryAct" method="infoBack">
+			<result>/WEB-INF/money/billQuery.jsp</result >			
+		</action>
+		<action name="billQuery" class="billQueryAct">
+			<result>/WEB-INF/money/billQuery.jsp</result >
+			<result name="unitDetail" type="redirect">/sys/unitList!list.html?result=billQuery</result >			
+			<result name="OK" type="redirect">/money/courseQuery.html</result >
+			<result name="exit" type="redirect">/money/courseDetail.html</result >
+		</action>
+			
+	</package>	
+</struts>

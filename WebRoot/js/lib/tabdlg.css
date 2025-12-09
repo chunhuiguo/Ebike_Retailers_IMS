@@ -1,0 +1,285 @@
+@charset "utf-8";
+
+.tabpanel {/*
+  border: solid 1px #8DB2E3;*/
+}
+
+.tabpanel_tab_content {
+  width: 100%;
+  height: 25px;
+  line-height: 25px;
+  background:#fff;
+  padding-bottom: 3px;
+  overflow: hidden;
+  white-space: nowrap;
+  position: relative;
+}
+
+.tabpanel_tab_content .tabpanel_move_content {
+  width: 0px;
+  overflow: hidden;
+}
+
+.tabpanel_move_content_scroll {
+  margin-left: 18px;
+  margin-right: 18px;
+}
+
+.tabpanel_mover {
+  width: 5000px;
+  margin: 0;
+  padding: 0;
+  position: relative;
+}
+
+.tabpanel_mover li {
+  background: transparent url(img/TabPanel/tab-bg.gif) repeat-x;
+  margin-top: 2px;
+  padding-right:15px;
+  height: 22px;
+  line-height: 22px;
+  border: solid 1px #8DB2E3;
+  margin-left: 2px;
+  float: left;
+  position: relative;
+  list-style-type: none;
+  cursor: pointer;
+  
+}
+.tabpanel_mover li#busy {
+  background: transparent;
+  padding:0 0 0 5px; 
+  border: 0;
+  cursor: default;
+  display:none;
+}
+
+.tabpanel_mover li .closer {
+  background: transparent url(img/TabPanel/tab-close.gif) no-repeat;
+  position: absolute;
+  right: 2px;
+  top: 2px;
+  width: 11px;
+  height: 11px;
+  cursor: pointer;
+}
+
+.tabpanel_mover li .title {
+  font-size: 12px;
+  padding-left: 5px;
+  overflow: hidden;
+  float: left;
+  *height: 20px;
+  *line-height: 20px;
+  *margin-top: 2px;
+}
+.tabpanel_mover li div {
+  color: #23508E;
+}
+
+.tabpanel_mover li .icon_title {
+  font-size: 12px;
+  color: #23508E;
+  padding-left: 25px;
+  background-repeat: no-repeat;
+  background-position: 5px 4px;
+  overflow: hidden;
+  float: left;
+  *height: 20px;
+  *line-height: 20px;
+  *margin-top: 2px;
+  *background-position: 5px 1px;
+}
+
+.tabpanel_mover li.active {
+  background: transparent url(img/TabPanel/tab-bg-active.gif) repeat-x;
+  border-bottom: solid 1px #DEECFD;
+  background-color: #DDEEFE;
+  font-weight: bold;
+}
+
+.tabpanel_tab_content .tabpanel_left_scroll {
+  background: transparent url(img/TabPanel/scroll-left.gif) no-repeat 0 0;
+  border-bottom: solid 1px #8DB2E3;
+  position: absolute;
+  width: 18px;
+  height: 24px;
+  left: 0px;
+  top: 1px;
+  cursor: pointer;
+  z-index: 10;
+}
+
+.tabpanel_tab_content .tabpanel_right_scroll {
+  background: transparent url(img/TabPanel/scroll-right.gif) no-repeat 0 0;
+  border-bottom: solid 1px #8DB2E3;
+  position: absolute;
+  width: 18px;
+  height: 24px;
+  right: 0px;
+  top: 1px;
+  cursor: pointer;
+  z-index: 10;
+}
+
+.tabpanel_tab_content .tabpanel_scroll_over {
+  background-position: -18px 0;
+}
+
+.tabpanel_tab_content .tabpanel_left_scroll_disabled {
+  background-position: 0 0;
+  opacity: .5;
+  -moz-opacity: .5;
+  filter: alpha(opacity = 50);
+  cursor: default;
+}
+
+.tabpanel_right_scroll_disabled {
+  background-position: -36px 0;
+  opacity: .5;
+  -moz-opacity: .5;
+  filter: alpha(opacity = 50);
+  cursor: default;
+}
+
+.display_none {
+  display: none;
+}
+
+.disabled {
+  color: gray;
+}
+
+.tabpanel_tab_content .tabpanel_tab_spacer {
+  border-top: 1px solid #8DB2E3;
+  height: 2px;
+  background: #DEECFD;
+  font-size: 1px;
+  line-height: 1px;
+  margin-top: -1px;
+}
+
+.tabpanel_content {
+  background-color: #fafafa;
+/*  overflow: auto;*/
+  height:500px;
+  position: relative;
+}
+
+.tabpanel_content .html_content {
+  width: 100%;
+  height: 100%;
+  background-color:#fafafa;
+  position: absolute;
+  z-index: 0;
+  left: 0;
+  top: 0;
+}
+
+/****dialog**********/
+
+#lyDlg {
+	display:none; 
+    position:relative;
+	width:100%;
+    border: 1px solid #3a93d2;
+	padding: .2em;
+	text-align:left;
+	cursor: default;
+	background-color:#fff;
+}
+#lyDlg #lyContent{
+	position:relative;
+	background:#fff;
+}
+
+#lyContent p.lyInfo{
+	position:relative;
+	margin-top:25px;
+	text-indent:50px;
+	font-size:13px;/*1.1em;*/
+}
+p span.ricon,p span.bicon{
+	position:absolute;
+	width:12px;
+	height:12px;
+	margin:1px 0 0 -20px;
+	background: transparent url("img/dlg.gif") no-repeat -16px 0;
+}
+p span.bicon{
+	background: transparent url("img/dlg.gif") no-repeat -16px -18px;
+}
+#lyDlg .lyDrag {
+	position: relative;
+	height:22px;
+	line-height:22px;
+	font-size:12px;
+	font-weight:bold;
+	color:white;
+	background: #3688c2;
+	padding:.1em 1em; 
+	border: 1px solid #4297d7;
+	overflow:hidden;
+	cursor: move;
+}
+
+#lyDlg a{ 
+	outline: none; 
+	text-decoration: none; 
+	blr:expression(this.onFocus=this.blur());
+}
+
+a#lyClose{
+	position: absolute; 
+	right: .3em; 
+	top: 50%; 
+	width: 17px; 
+	height: 16px;
+	margin: -10px 0 0 0; 
+	padding: 1px; 
+	border: 1px solid #3688c2;
+	text-decoration:none;
+	background: transparent url("img/dlg.gif") no-repeat 5px 4px ;
+	cursor: pointer;
+}
+a#lyClose:hover, a#lyClose:active, a#lyClose:focus {
+	background:#fcfcfc url("img/dlg.gif") no-repeat 5px -11px;
+	border: 1px solid #8ec2e8;
+}
+
+#lyDlg div.lyResize {
+	position: absolute;
+	width: 11px; 
+	height:11px; 
+	right: 3px; bottom: 3px;
+	background:transparent url("img/dlg.gif") no-repeat left bottom;
+	cursor: se-resize;
+}
+#lyDlg .lyConfirm{
+	width:98%;
+	height:40px;
+	position:absolute;	
+	bottom:0;
+	border-top:1px solid #c4c2bf;
+}
+.lyConfirm a{
+	position:absolute;	
+	line-height:20px;
+	height:20px;
+	width: 50px;
+	text-align:center;
+	border: 1px solid #c5dbec;
+	background:#e5f2fc;
+}
+.lyConfirm a.yes{
+	top:9px;
+	right:90px;
+}
+.lyConfirm a.no{
+	top:9px;
+	right:20px;
+}
+a.yes:hover, a.yes:active, a.yes:focus,a.no:hover, a.no:active, a.no:focus{
+	border: 1px solid #79b7e7;
+	background:#d2e6f5;
+}

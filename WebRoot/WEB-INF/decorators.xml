@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<decorators defaultdir="/WEB-INF/decorators"> 
+
+    <excludes>
+		<pattern>/*/My97DatePicker.htm</pattern>
+    </excludes>
+
+    <decorator name="default" page="default.jsp">
+        <pattern>/*.html</pattern>
+    </decorator>
+	
+	<decorator name="login" page="login.jsp">
+        <pattern>/*</pattern>
+    </decorator>
+    
+    <decorator name="pop-up" page="pop-up.jsp">
+        <pattern>/*</pattern>
+    </decorator>
+	
+	<decorator name="error" page="error.jsp">
+        <pattern>/*</pattern>
+    </decorator>
+
+    <decorator name="main" page="panel.jsp">
+        <pattern>/*</pattern>
+    </decorator>
+
+    <decorator name="panel" page="panel.jsp"/>
+    <decorator name="mainpop-up" page="panel.jsp"/>
+   
+</decorators>

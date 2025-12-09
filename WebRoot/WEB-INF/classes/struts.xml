@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.1//EN"
+    "http://struts.apache.org/dtds/struts-2.1.dtd">
+
+<struts>
+
+	<constant name="struts.action.extension" value="html" />
+
+	<include file="/com/luyuan/home/struts-home.xml" />
+	<include file="/com/luyuan/deal/struts-deal.xml" />
+	<include file="/com/luyuan/query/struts-query.xml" />
+	<include file="/com/luyuan/info/struts-info.xml" />
+	<include file="/com/luyuan/stock/struts-stock.xml" />
+	<include file="/com/luyuan/money/struts-money.xml" />
+	<include file="/com/luyuan/report/struts-report.xml" />
+
+	<include file="/com/luyuan/sys/struts-sys.xml" />
+
+
+</struts>

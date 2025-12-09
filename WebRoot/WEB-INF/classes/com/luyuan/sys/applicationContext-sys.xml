@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:aop="http://www.springframework.org/schema/aop"
+	xmlns:tx="http://www.springframework.org/schema/tx" xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.5.xsd
+					http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-2.5.xsd
+					http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-2.5.xsd
+					http://www.springframework.org/schema/jee http://www.springframework.org/schema/jee/spring-jee-2.5.xsd
+					http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-2.5.xsd">
+
+	<!-- ww -->
+	<bean id="usersDAO" class="com.luyuan.sys.dao.impl.UsersDAOImpl" scope="session">
+		<aop:scoped-proxy />
+		<property name="sessionFactory" ref="publicSessionFactory" />
+	</bean>
+	<bean id="usersBiz" class="com.luyuan.sys.biz.impl.UsersBizImpl" autowire="byName" />
+
+<!--  
+	<bean id="usersAct" class="com.luyuan.sys.action.UsersAct" scope="session" autowire="byName" />
+-->
+	<bean id="userEditAct" class="com.luyuan.sys.action.UserEditAct" scope="session" autowire="byName" />
+
+	<bean id="userManageAct" class="com.luyuan.sys.action.UserManageAct" scope="session" autowire="byName" />
+	<bean id="changePWAct" class="com.luyuan.sys.action.ChangePWAct" scope="session" autowire="byName" />
+
+	<bean id="roleDAO" class="com.luyuan.sys.dao.impl.RoleDAOImpl" scope="session">
+		<aop:scoped-proxy />
+		<property name="sessionFactory" ref="publicSessionFactory" />
+	</bean>
+	<bean id="roleBiz" class="com.luyuan.sys.biz.impl.RoleBizImpl" autowire="byName" />
+	<bean id="roleAct" class="com.luyuan.sys.action.RoleAct" scope="session" autowire="byName" />
+
+	<bean id="operationDAO" class="com.luyuan.sys.dao.impl.OperationDAOImpl" scope="session">
+		<aop:scoped-proxy />
+		<property name="sessionFactory" ref="publicSessionFactory" />
+	</bean>
+	<bean id="operationBiz" class="com.luyuan.sys.biz.impl.OperationBizImpl" autowire="byName" />
+	<bean id="operationAct" class="com.luyuan.sys.action.OperationAct" scope="session" autowire="byName" />
+
+	<bean id="userRoleDAO" class="com.luyuan.sys.dao.impl.UserRoleDAOImpl" scope="session">
+		<aop:scoped-proxy />
+		<property name="sessionFactory" ref="publicSessionFactory" />
+	</bean>
+	<bean id="userRoleBiz" class="com.luyuan.sys.biz.impl.UserRoleBizImpl" autowire="byName" />
+	<bean id="userRoleAct" class="com.luyuan.sys.action.UserRoleAct" scope="session" autowire="byName" />
+
+	<bean id="roleOperationDAO" class="com.luyuan.sys.dao.impl.RoleOperationDAOImpl" scope="session">
+		<aop:scoped-proxy />
+		<property name="sessionFactory" ref="publicSessionFactory" />
+	</bean>
+	
+	<bean id="roleOperationAct" class="com.luyuan.sys.action.RoleOperationAct" scope="session" autowire="byName" />
+
+	<bean id="addUserAct" class="com.luyuan.sys.action.AddUserAct" scope="session" autowire="byName" />
+
+	<bean id="unitDAO" class="com.luyuan.sys.dao.impl.UnitDAOImpl" scope="session">
+		<aop:scoped-proxy />
+		<property name="sessionFactory" ref="publicSessionFactory" />		
+		<property name="className" value="Unit" />
+	</bean>
+	<bean id="unitBiz" class="com.luyuan.sys.biz.impl.UnitBizImpl" autowire="byName" />
+
+	<!-- gch -->
+	<bean id="unitAct" class="com.luyuan.sys.action.UnitAct" scope="session" autowire="byName" />
+	<bean id="unitListAct" class="com.luyuan.sys.action.UnitListAct" scope="session" autowire="byName" />
+
+	<bean id="orderDAO" class="com.luyuan.sys.dao.impl.OrderDAOImpl" scope="session">
+		<aop:scoped-proxy />
+		<property name="sessionFactory" ref="publicSessionFactory" />
+	</bean>
+	<bean id="orderDetailDAO" class="com.luyuan.sys.dao.impl.OrderDetailDAOImpl" scope="session">
+		<aop:scoped-proxy />
+		<property name="sessionFactory" ref="publicSessionFactory" />
+	</bean>
+	
+	<bean id="shipOrderAct" class="com.luyuan.sys.action.ShipOrderAct" scope="session" autowire="byName" />
+	<bean id="shipOrderBiz" class="com.luyuan.sys.biz.impl.ShipOrderBizImpl" autowire="byName" />
+	<bean id="shipOrderDAO" class="com.luyuan.sys.dao.impl.ShipOrderDAOImpl" scope="session">
+		<aop:scoped-proxy />
+		<property name="sessionFactory" ref="publicSessionFactory" />
+		<property name="className" value="ShipOrder" />
+	</bean>
+	
+	<bean id="shipOrderDetailAct" class="com.luyuan.sys.action.ShipOrderDetailAct" scope="session" autowire="byName" />
+	
+	<bean id="partOrderDAO" class="com.luyuan.sys.dao.impl.PartOrderDAOImpl" scope="session">
+		<aop:scoped-proxy />
+		<property name="sessionFactory" ref="publicSessionFactory" />
+	</bean>
+	<bean id="partOrderDetailDAO" class="com.luyuan.sys.dao.impl.PartOrderDetailDAOImpl" scope="session">
+		<aop:scoped-proxy />
+		<property name="sessionFactory" ref="publicSessionFactory" />
+	</bean>
+	
+	<bean id="partShipOrderAct" class="com.luyuan.sys.action.PartShipOrderAct" scope="session" autowire="byName" />
+	<bean id="partShipOrderBiz" class="com.luyuan.sys.biz.impl.PartShipOrderBizImpl" autowire="byName" />
+	<bean id="partShipOrderDAO" class="com.luyuan.sys.dao.impl.PartShipOrderDAOImpl" scope="session">
+		<aop:scoped-proxy />
+		<property name="sessionFactory" ref="publicSessionFactory" />
+		<property name="className" value="PartShipOrder" />
+	</bean>
+
+	<!-- zsh -->
+	<bean id="productDiffDAO" class="com.luyuan.sys.dao.impl.ProductDiffDAOImpl" scope="session">
+		<aop:scoped-proxy />
+		<property name="sessionFactory" ref="publicSessionFactory" />
+		<property name="className" value="ProductDiff" />
+	</bean>
+	<bean id="productDiffBiz" class="com.luyuan.sys.biz.impl.ProductDiffBizImpl" autowire="byName" />
+	<bean id="productDiffAct" class="com.luyuan.sys.action.ProductDiffAct" scope="session" autowire="byName" />
+	
+	<bean id="partDiffDAO" class="com.luyuan.sys.dao.impl.PartDiffDAOImpl" scope="session">
+		<aop:scoped-proxy />
+		<property name="sessionFactory" ref="publicSessionFactory" />
+		<property name="className" value="PartDiff" />
+	</bean>
+	<bean id="partDiffBiz" class="com.luyuan.sys.biz.impl.PartDiffBizImpl" autowire="byName" />
+	<bean id="partDiffAct" class="com.luyuan.sys.action.PartDiffAct" scope="session" autowire="byName" />
+
+</beans>

@@ -1,0 +1,227 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans" 
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:aop="http://www.springframework.org/schema/aop"
+	xmlns:tx="http://www.springframework.org/schema/tx"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.5.xsd
+					http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-2.5.xsd
+					http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-2.5.xsd
+					http://www.springframework.org/schema/jee http://www.springframework.org/schema/jee/spring-jee-2.5.xsd
+					http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-2.5.xsd">
+	
+	<!-- 整车 -->	
+	<bean id="codeCreatorService" class="com.luyuan.deal.biz.CodeCreatorService" autowire="byName"/>
+	<bean id="codeCreatorDAO" class="com.luyuan.deal.dao.impl.CodeCreatorDAOImpl" scope="session">
+		<aop:scoped-proxy />
+		<property name="sessionFactory" ref="lypsiSessionFactory" />
+	</bean>
+
+	<bean id="voucherBiz" class="com.luyuan.deal.biz.impl.VoucherBizImpl">
+		<property name="codeCreatorService" ref="codeCreatorService" />
+		<property name="voucherDAO" ref="voucherDAO" />
+		<property name="voucherDetailDAO" ref="voucherDetailDAO" />
+		<property name="voucherEXTDAO" ref="voucherEXTDAO" />
+		<property name="inventoryDAO" ref="inventoryDAO" />
+		<property name="pinventoryDAO" ref="pinventoryDAO" />
+		<property name="inventoryDetailDAO" ref="inventoryDetailDAO" />
+		<property name="pinventoryDetailDAO" ref="pinventoryDetailDAO" />
+		<property name="inventoryBookDAO" ref="inventoryBookDAO" />
+		<property name="pinventoryBookDAO" ref="pinventoryBookDAO" />
+		<property name="inventoryOutApportionDAO" ref="inventoryOutApportionDAO" />
+		<property name="pinventoryOutApportionDAO" ref="pinventoryOutApportionDAO" />
+		<property name="accountDAO" ref="accountDAO" />
+		<property name="subAccountDAO" ref="subAccountDAO" />
+		<property name="dealingBookDAO" ref="dealingBookDAO" />
+		<property name="employeeDAO" ref="employeeDAO" />
+		<property name="orderDAO" ref="orderDAO" />
+		<property name="orderDetailDAO" ref="orderDetailDAO" />
+		<property name="partOrderDAO" ref="partOrderDAO" />
+		<property name="partOrderDetailDAO" ref="partOrderDetailDAO" />
+		<property name="inventoryLastDAO" ref="inventoryLastDAO" />
+		<property name="pinventoryLastDAO" ref="pinventoryLastDAO" />
+		<property name="pSIProductMonthlyReportDAO" ref="pSIProductMonthlyReportDAO" />
+		<property name="pSIPartMonthlyReportDAO" ref="pSIPartMonthlyReportDAO" />
+	</bean>
+	<bean id="pvoucherBiz" parent="voucherBiz">
+		<property name="voucherDAO" ref="pvoucherDAO" />
+		<property name="voucherDetailDAO" ref="pvoucherDetailDAO" />
+		<property name="dealingBookDAO" ref="pDealingBookDAO" />		
+	</bean>
+			
+	<bean id="voucherEXTDAO" class="com.luyuan.deal.dao.impl.VoucherEXTDAOImpl" scope="session">
+		<aop:scoped-proxy />
+		<property name="sessionFactory" ref="lypsiSessionFactory" />
+	</bean>	
+	
+	<bean id="voucherDAO" class="com.luyuan.deal.dao.impl.VoucherDAOImpl" scope="session">
+		<aop:scoped-proxy />		
+		<property name="sessionFactory" ref="lypsiSessionFactory" />
+		<property name="className" value="Voucher" />
+	</bean>	
+	<bean id="pvoucherDAO" class="com.luyuan.deal.dao.impl.VoucherDAOImpl" scope="session">
+		<aop:scoped-proxy />		
+		<property name="sessionFactory" ref="lypsiSessionFactory" />
+		<property name="className" value="PVoucher" />
+	</bean>	
+	<!-- 
+	<bean id="pvoucherDAO" parent="voucherDAO">
+		<property name="className" value="PVoucher" />
+	</bean>	
+	 -->
+	
+	<bean id="voucherDetailDAO" class="com.luyuan.deal.dao.impl.VoucherDetailDAOImpl" scope="session">
+		<aop:scoped-proxy />
+		<property name="sessionFactory" ref="lypsiSessionFactory" />
+		<property name="className" value="VoucherDetail" />
+	</bean>
+	<bean id="pvoucherDetailDAO" class="com.luyuan.deal.dao.impl.VoucherDetailDAOImpl" scope="session">
+		<aop:scoped-proxy />
+		<property name="sessionFactory" ref="lypsiSessionFactory" />
+		<property name="className" value="PVoucherDetail" />
+	</bean>
+	<!-- 
+	<bean id="pvoucherDetailDAO" parent="voucherDetailDAO">
+		<property name="className" value="PVoucherDetail" />
+	</bean>	
+	 -->
+	
+	<bean id="purchaseAct" class="com.luyuan.deal.action.PurchaseAct" scope="session">
+		<property name="type" value="整车" />	
+		<property name="voucherBiz" ref="voucherBiz" />
+		<property name="employeeBiz" ref="employeeBiz" /> 	
+		<property name="subAccountBiz" ref="subAccountBiz" /> 
+		<property name="productBiz" ref="productBiz" /> 	
+		<property name="partBiz" ref="partBiz" />
+		<property name="warehouseBiz" ref="warehouseBiz" /> 
+		<property name="productDiffBiz" ref="productDiffBiz" /> 	
+		<property name="partDiffBiz" ref="partDiffBiz" />			
+	</bean>	
+	<bean id="ppurchaseAct" parent="purchaseAct" scope="session">
+		<property name="type" value="配件" />
+		<property name="voucherBiz" ref="pvoucherBiz" />		
+	</bean>	
+	
+	<bean id="purchaseBackAct" class="com.luyuan.deal.action.PurchaseBackAct" scope="session">	
+		<property name="type" value="整车" />
+		<property name="voucherBiz" ref="voucherBiz" />
+		<property name="employeeBiz" ref="employeeBiz" /> 
+		<property name="warehouseBiz" ref="warehouseBiz" />
+		<property name="subAccountBiz" ref="subAccountBiz" /> 
+		<property name="productBiz" ref="productBiz" /> 
+	</bean>
+	<bean id="ppurchaseBackAct" parent="purchaseBackAct" scope="session">	
+		<property name="type" value="配件" />
+		<property name="voucherBiz" ref="pvoucherBiz" />
+	</bean>
+	
+	<bean id="saleAct" class="com.luyuan.deal.action.SaleAct" scope="session">
+		<property name="type" value="整车" />
+		<property name="productBiz" ref="productBiz" /> 
+		<property name="voucherBiz" ref="voucherBiz" />
+		<property name="employeeBiz" ref="employeeBiz" /> 	
+		<property name="subAccountBiz" ref="subAccountBiz" /> 
+		<property name="warehouseBiz" ref="warehouseBiz" /> 		
+	</bean>
+	<bean id="psaleAct" parent="saleAct" scope="session">
+		<property name="type" value="配件" />
+		<property name="voucherBiz" ref="pvoucherBiz" />
+	</bean>
+	
+	<bean id="saleBackAct" class="com.luyuan.deal.action.SaleBackAct" scope="session">
+		<property name="type" value="整车" />
+		<property name="productBiz" ref="productBiz" /> 
+		<property name="voucherBiz" ref="voucherBiz" />
+		<property name="employeeBiz" ref="employeeBiz" /> 	
+		<property name="subAccountBiz" ref="subAccountBiz" /> 
+		<property name="warehouseBiz" ref="warehouseBiz" /> 
+	</bean>
+	<bean id="psaleBackAct" parent="saleBackAct" scope="session">
+		<property name="type" value="配件" />
+		<property name="voucherBiz" ref="pvoucherBiz" />
+	</bean>
+	
+	<bean id="transferInAct" class="com.luyuan.deal.action.TransferInAct" scope="session">
+		<property name="type" value="整车" />
+		<property name="voucherBiz" ref="voucherBiz" />
+		<property name="productBiz" ref="productBiz" /> 
+		<property name="employeeBiz" ref="employeeBiz" /> 	
+		<property name="warehouseBiz" ref="warehouseBiz" /> 
+	</bean>
+	<bean id="ptransferInAct" parent="transferInAct" scope="session">
+		<property name="type" value="配件" />
+		<property name="voucherBiz" ref="pvoucherBiz" />
+	</bean>
+	
+	<bean id="transferOutAct" class="com.luyuan.deal.action.TransferOutAct" scope="session">
+		<property name="type" value="整车" />
+		<property name="voucherBiz" ref="voucherBiz" />
+		<property name="productBiz" ref="productBiz" /> 
+		<property name="employeeBiz" ref="employeeBiz" /> 	
+		<property name="warehouseBiz" ref="warehouseBiz" /> 
+	</bean>
+	<bean id="ptransferOutAct" parent="transferOutAct" scope="session">
+		<property name="type" value="配件" />
+		<property name="voucherBiz" ref="pvoucherBiz" />
+	</bean>
+	
+	<bean id="lossAct" class="com.luyuan.deal.action.LossAct" scope="session">
+		<property name="type" value="整车" />
+		<property name="voucherBiz" ref="voucherBiz" />
+		<property name="productBiz" ref="productBiz" /> 
+		<property name="employeeBiz" ref="employeeBiz" /> 	
+		<property name="warehouseBiz" ref="warehouseBiz" /> 
+		<property name="unitBiz" ref="unitBiz" /> 
+	</bean>
+	<bean id="plossAct" parent="lossAct" scope="session">
+		<property name="type" value="配件" />
+		<property name="voucherBiz" ref="pvoucherBiz" />
+	</bean>
+	
+	<bean id="overflowAct" class="com.luyuan.deal.action.OverflowAct" scope="session">
+		<property name="type" value="整车" />
+		<property name="productBiz" ref="productBiz" /> 
+		<property name="voucherBiz" ref="voucherBiz" />
+		<property name="employeeBiz" ref="employeeBiz" /> 	
+		<property name="warehouseBiz" ref="warehouseBiz" /> 
+		<property name="unitBiz" ref="unitBiz" />
+	</bean>
+	<bean id="poverflowAct" parent="overflowAct" scope="session">
+		<property name="type" value="配件" />
+		<property name="voucherBiz" ref="pvoucherBiz" />
+	</bean>
+	
+	<bean id="dealCourseAct" class="com.luyuan.deal.action.CourseAct" scope="session">
+		<property name="type" value="整车" />
+		<property name="voucherBiz" ref="voucherBiz" />
+	</bean>
+	<bean id="pdealCourseAct" parent="dealCourseAct" scope="session">
+		<property name="type" value="配件" />
+		<property name="voucherBiz" ref="pvoucherBiz" />
+	</bean>
+	
+	<bean id="dealDraftAct" class="com.luyuan.deal.action.DraftAct" scope="session">
+		<property name="type" value="整车" />
+		<property name="voucherBiz" ref="voucherBiz" />
+	</bean>
+	<bean id="pdealDraftAct" parent="dealDraftAct" scope="session">
+		<property name="type" value="配件" />
+		<property name="voucherBiz" ref="pvoucherBiz" />
+	</bean>
+	
+	<bean id="voucherQueryAct" class="com.luyuan.deal.action.VoucherQueryAct" scope="session">
+		<property name="type" value="整车" />
+	</bean>
+	<bean id="pvoucherQueryAct" parent="voucherQueryAct" scope="session">
+		<property name="type" value="配件" />
+	</bean>
+		<bean id="checkAct" class="com.luyuan.deal.action.CheckAct"  scope="session" >
+		<property name="warehouseBiz" ref="warehouseBiz" /> 
+
+		<property name="employeeBiz" ref="employeeBiz" />
+		<property name="inventoryBiz" ref="inventoryBiz" />
+		<property name="productBiz" ref="productBiz" />
+		<property name="type" value="整车" />
+	</bean>	
+	
+</beans>

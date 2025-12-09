@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.1//EN"
+    "http://struts.apache.org/dtds/struts-2.1.dtd">
+<struts>
+	<package name="home" extends="struts-default" namespace="/">
+		
+		<interceptors>
+			<interceptor name="clearFieldInterceptor" class="com.luyuan.intercept.ClearFieldInterceptor"></interceptor>
+			<interceptor name="timeoutIntercept" class="com.luyuan.intercept.TimeoutIntercept"></interceptor>
+
+			<interceptor-stack name="luyuanStack">
+				<interceptor-ref name="timeoutIntercept"></interceptor-ref>
+				<interceptor-ref name="clearFieldInterceptor"></interceptor-ref>
+				<interceptor-ref name="defaultStack"></interceptor-ref>
+			</interceptor-stack>
+		</interceptors>
+	 	<default-interceptor-ref name="luyuanStack"> </default-interceptor-ref>
+	 	
+		<global-results>
+			<result name="login">/WEB-INF/home/login.jsp</result>
+			<result name="logout" type="redirect">/login.html</result>
+			<result name="timeout">/WEB-INF/public/intercept/timeout.jsp</result>			
+		</global-results>
+
+		
+		
+		<action name="login" class="loginAct" method="login">
+		</action>
+		<action name="logout" class="loginAct" method="logout">
+		</action>
+		
+		
+		<action name="enter" class="loginAct" method="enter">
+			<result name="success" type="redirect">/luyuan.html</result>
+			<result name="input">/WEB-INF/home/login.jsp</result>
+		</action>
+		
+		
+		<action name="luyuan" class="homeAct" method="home">
+			<result>/WEB-INF/home/home.jsp</result>
+		</action>
+		
+		
+	</package>
+</struts>

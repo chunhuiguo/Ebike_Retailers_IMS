@@ -1,0 +1,159 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.1//EN"
+    "http://struts.apache.org/dtds/struts-2.1.dtd">
+<struts>
+	<package name="sys" extends="home" namespace="/sys">
+		<default-interceptor-ref name="luyuanStack"> </default-interceptor-ref>
+		<!-- ww -->
+		<action name="userManage" class="userManageAct">
+			<result>/WEB-INF/sys/userManage.jsp</result>
+			<result name="resetPassword">/WEB-INF/sys/resetPassword.jsp</result>
+		</action>
+		
+		<action name="userEdit" class="userManageAct" method="edit">
+			<result name="edit" type="redirect">/sys/editIn.html</result>
+		</action>
+		
+		<action name="editIn" class="userEditAct" method="editIn">
+			<result>/WEB-INF/sys/userEdit.jsp</result>
+		</action>
+		
+		<action name="editUserInfo" class="userEditAct">
+			<result>/WEB-INF/sys/userEdit.jsp</result>
+			<result name="employeeDetail" type="redirect">/info/employeeList!list.html?result=editUser</result>
+			<result name="cancel" type="redirect">/home/luyuan.html</result>
+		</action>
+		<action name="editUserInfoBack" class="userEditAct" method="infoBack">
+			<result>/WEB-INF/sys/userEdit.jsp</result>			
+		</action>
+		
+		<action name="userRole" class="userManageAct" method="role">
+			<result name="role" type="redirect">/sys/roleIn.html</result>
+		</action>
+		
+		<action name="roleIn" class="roleAct" method="roleIn">
+			<result>/WEB-INF/sys/userRole.jsp</result>
+		</action>
+		
+		<action name="role" class="roleAct">
+			<result>/WEB-INF/sys/userRole.jsp</result>
+			<result name="cancel" type="redirect">/home/luyuan.html</result>
+		</action>
+		
+		<action name="addNew" class="addUserAct">
+			<result>/WEB-INF/sys/addUser.jsp</result>
+			<result name="employeeDetail" type="redirect">/info/employeeList!list.html?result=addUser</result>
+			<result name="cancel" type="redirect">/home/luyuan.html</result>
+		</action>
+		
+		<action name="addUserInfoBack" class="addUserAct" method="infoBack">
+			<result>/WEB-INF/sys/addUser.jsp</result>			
+		</action>
+		
+		<action name="changePW" class="changePWAct">
+			<result>/WEB-INF/sys/changePW.jsp</result>
+			<result name="cancel" type="redirect">/home/luyuan.html</result>
+		</action>
+		
+		
+		<!-- gch -->
+		
+		<!-- ************************************************************************************** -->
+		<action name="unitList" class="unitListAct">
+			<result>/WEB-INF/sys/unitList.jsp</result>
+			<result name="purchase" type="redirect">/deal/purchase!unitListBack.html</result> 
+        	<result name="purchaseBack" type="redirect">/deal/purchaseBack!unitListBack.html</result>
+        	<result name="sale" type="redirect">/deal/sale!unitListBack.html</result> 
+        	<result name="saleBack" type="redirect">/deal/saleBack!unitListBack.html</result> 
+        	<result name="transferIn" type="redirect">/deal/transferIn!unitListBack.html</result> 
+        	<result name="transferOut" type="redirect">/deal/transferOut!unitListBack.html</result>   
+        	<result name="voucherQuery" type="redirect">/deal/voucherQuery!unitListBack.html</result> 
+        	<result name="ppurchase" type="redirect">/deal/ppurchase!unitListBack.html</result> 
+        	<result name="ppurchaseBack" type="redirect">/deal/ppurchaseBack!unitListBack.html</result>
+        	<result name="psale" type="redirect">/deal/psale!unitListBack.html</result> 
+        	<result name="psaleBack" type="redirect">/deal/psaleBack!unitListBack.html</result> 
+        	<result name="ptransferIn" type="redirect">/deal/ptransferIn!unitListBack.html</result> 
+        	<result name="ptransferOut" type="redirect">/deal/ptransferOut!unitListBack.html</result>   
+        	<result name="pvoucherQuery" type="redirect">/deal/pvoucherQuery!unitListBack.html</result>
+        	<result name="payment" type="redirect">/money/payment!unitListBack.html</result>
+			<result name="receipt" type="redirect">/money/receipt!unitListBack.html</result>
+			<result name="billQuery" type="redirect">/money/billQuery!unitListBack.html</result>
+			<result name="accountAdd" type="redirect">/info/accountAdd!unitListBack.html</result>			
+			<result name="employeeSave" type="redirect">/info/employee!unitListBackToSave.html</result>
+			<result name="employeeUpdate" type="redirect">/info/employee!unitListBackToUpdate.html</result>			
+			<result name="warehouseSave" type="redirect">/info/warehouse!unitListBackToSave.html</result>		
+			<result name="warehouseUpdate" type="redirect">/info/warehouse!unitListBackToUpdate.html</result>	
+			<result name="inventory" type="redirect">/stock/inventorySubmit!unitListBack.html</result>
+			<result name="pinventory" type="redirect">/stock/pinventorySubmit!unitListBack.html</result>
+			
+			<result name="invalid.token">/WEB-INF/sys/unitList.jsp</result> 
+			<interceptor-ref name="timeoutIntercept" />			
+			<interceptor-ref name="clearFieldInterceptor" />
+			<interceptor-ref name="defaultStack" />
+			<interceptor-ref name="token">
+				<param name="excludeMethods">list, select</param>
+			</interceptor-ref>
+		</action>
+		<!-- ************************************************************************************** -->	
+		
+		<!-- ************************************************************************************** -->
+		<action name="shipOrder" class="shipOrderAct">
+			<result>/WEB-INF/sys/shipOrderList.jsp</result> 
+			<result name="input">/WEB-INF/sys/shipOrderList.jsp</result>	
+		</action>
+		<!-- ************************************************************************************** -->	
+		
+		<!-- ************************************************************************************** -->
+		<action name="shipOrderDetail" class="shipOrderDetailAct">
+			<result>/WEB-INF/sys/shipOrderDetail.jsp</result> 			
+		</action>
+		<!-- ************************************************************************************** -->	
+		
+		<!-- ************************************************************************************** -->
+		<action name="partShipOrder" class="partShipOrderAct">
+			<result>/WEB-INF/sys/partShipOrderList.jsp</result>
+			<result name="ppurchase" type="redirect">/deal/ppurchase!partShipOrderListBack.html</result> 	
+		</action>
+		<!-- ************************************************************************************** -->	
+		
+		<!-- zsh -->		
+		<action name="productDiff" class="productDiffAct">
+			<result>/WEB-INF/sys/productDiff.jsp</result>
+			<result name="productAdd" type="redirect">/info/productAdd.html</result>
+		</action>
+		<action name="partDiff" class="partDiffAct">
+			<result>/WEB-INF/sys/partDiff.jsp</result>
+			<result name="partAdd" type="redirect">/info/partAdd.html</result>
+		</action>			
+		
+		
+		<!--往来单位操作 -->	
+		<action name="unit" class="unitAct">
+			<result>/WEB-INF/sys/unit.jsp</result>
+			<result name="save">/WEB-INF/sys/unitSave.jsp</result>
+			<result name="update">/WEB-INF/sys/unitUpdate.jsp</result>
+			<result name="select" type="redirect">/sys/unitSelectInfoInput.html</result>
+			<result name="stop" type="redirect">/sys/unit.html</result>
+		</action>
+		<action name="unitSave" class="unitAct" method="save">
+		<result>/WEB-INF/sys/unitSave.jsp</result>
+			<result name="save" type="redirect">/sys/unit.html</result>
+			<result name="exit" type="redirect">/sys/unit.html</result>
+		</action>
+		<action name="unitUpdate" class="unitAct" method="update">
+			<result>/WEB-INF/sys/unitUpdate.jsp</result>
+			<result name="update" type="redirect">/sys/unit.html</result>
+			<result name="exit" type="redirect">/sys/unit.html</result>
+		</action>
+		<action name="unitSelectInfoInput" class="unitAct" method="selectInput">
+			<result>/WEB-INF/sys/unitSelect.jsp</result>
+		</action>
+		<action name="unitSelectInfo" class="unitAct" method="select">
+			<result>/WEB-INF/sys/unitSelect.jsp</result>
+			<result name="update">/WEB-INF/sys/unitUpdate.jsp</result>
+			<result name="exit" type="redirect">/sys/unit.html</result>
+		</action>		
+			
+	</package>
+</struts>

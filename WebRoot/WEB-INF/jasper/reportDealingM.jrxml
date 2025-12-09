@@ -1,0 +1,213 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="reportDealingM" language="groovy" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="32"/>
+	<queryString>
+		<![CDATA[]]>
+	</queryString>
+	<field name="actualAmount" class="java.lang.Double">
+		<fieldDescription><![CDATA[actualAmount]]></fieldDescription>
+	</field>
+	<field name="dealerShortName" class="java.lang.String">
+		<fieldDescription><![CDATA[dealerShortName]]></fieldDescription>
+	</field>
+	<field name="dealingUnitShortName" class="java.lang.String">
+		<fieldDescription><![CDATA[dealingUnitShortName]]></fieldDescription>
+	</field>
+	<field name="dueAmount" class="java.lang.Double">
+		<fieldDescription><![CDATA[dueAmount]]></fieldDescription>
+	</field>
+	<field name="finalBalance" class="java.lang.Double">
+		<fieldDescription><![CDATA[finalBalance]]></fieldDescription>
+	</field>
+	<field name="initialBalance" class="java.lang.Double">
+		<fieldDescription><![CDATA[initialBalance]]></fieldDescription>
+	</field>
+	<field name="reportMonth" class="java.lang.String">
+		<fieldDescription><![CDATA[reportMonth]]></fieldDescription>
+	</field>
+	<field name="reportYear" class="java.lang.String">
+		<fieldDescription><![CDATA[reportYear]]></fieldDescription>
+	</field>
+	<field name="subAccountType" class="java.lang.String">
+		<fieldDescription><![CDATA[subAccountType]]></fieldDescription>
+	</field>
+	<field name="type" class="java.lang.String">
+		<fieldDescription><![CDATA[type]]></fieldDescription>
+	</field>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="79" splitType="Stretch">
+			<staticText>
+				<reportElement x="215" y="17" width="141" height="49"/>
+				<textElement>
+					<font size="30" isBold="true" isItalic="false" isUnderline="false" pdfFontName="STSong-Light" pdfEncoding="UniGB-UCS2-H" isPdfEmbedded="true"/>
+				</textElement>
+				<text><![CDATA[账款月报]]></text>
+			</staticText>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="35" splitType="Stretch">
+			<textField pattern="yyyy/MM/dd">
+				<reportElement x="59" y="0" width="91" height="20"/>
+				<textElement/>
+				<textFieldExpression class="java.util.Date"><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="1" y="0" width="58" height="20"/>
+				<textElement>
+					<font pdfFontName="STSong-Light" pdfEncoding="UniGB-UCS2-H" isPdfEmbedded="true"/>
+				</textElement>
+				<text><![CDATA[打印日期：]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="513" y="0" width="22" height="20"/>
+				<textElement/>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{reportMonth}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="413" y="0" width="52" height="20"/>
+				<textElement>
+					<font pdfFontName="STSong-Light" pdfEncoding="UniGB-UCS2-H" isPdfEmbedded="true"/>
+				</textElement>
+				<text><![CDATA[报表日期：]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="465" y="0" width="29" height="20"/>
+				<textElement/>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{reportYear}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="535" y="0" width="19" height="20"/>
+				<textElement>
+					<font pdfFontName="STSong-Light" pdfEncoding="UniGB-UCS2-H" isPdfEmbedded="true"/>
+				</textElement>
+				<text><![CDATA[月]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="494" y="0" width="19" height="20"/>
+				<textElement>
+					<font pdfFontName="STSong-Light" pdfEncoding="UniGB-UCS2-H" isPdfEmbedded="true"/>
+				</textElement>
+				<text><![CDATA[年]]></text>
+			</staticText>
+		</band>
+	</pageHeader>
+	<columnHeader>
+		<band height="61" splitType="Stretch">
+			<staticText>
+				<reportElement x="-12" y="0" width="106" height="38"/>
+				<textElement>
+					<font size="15" isBold="true" pdfFontName="STSong-Light" pdfEncoding="UniGB-UCS2-H" isPdfEmbedded="true"/>
+				</textElement>
+				<text><![CDATA[往来单位简称]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="94" y="0" width="64" height="38"/>
+				<textElement>
+					<font size="15" isBold="true" pdfFontName="STSong-Light" pdfEncoding="UniGB-UCS2-H" isPdfEmbedded="true"/>
+				</textElement>
+				<text><![CDATA[账户名称]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="215" y="0" width="65" height="38"/>
+				<textElement>
+					<font size="15" isBold="true" pdfFontName="STSong-Light" pdfEncoding="UniGB-UCS2-H" isPdfEmbedded="true"/>
+				</textElement>
+				<text><![CDATA[上月余额]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="280" y="0" width="100" height="38"/>
+				<textElement>
+					<font size="15" isBold="true" pdfFontName="STSong-Light" pdfEncoding="UniGB-UCS2-H" isPdfEmbedded="true"/>
+				</textElement>
+				<text><![CDATA[本月应发生数]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="380" y="0" width="100" height="38"/>
+				<textElement>
+					<font size="15" isBold="true" pdfFontName="STSong-Light" pdfEncoding="UniGB-UCS2-H" isPdfEmbedded="true"/>
+				</textElement>
+				<text><![CDATA[本月实发生数]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="480" y="0" width="74" height="38"/>
+				<textElement>
+					<font size="15" isBold="true" pdfFontName="STSong-Light" pdfEncoding="UniGB-UCS2-H" isPdfEmbedded="true"/>
+				</textElement>
+				<text><![CDATA[本月结余]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="171" y="0" width="44" height="38"/>
+				<textElement>
+					<font size="15" isBold="true" pdfFontName="STSong-Light" pdfEncoding="UniGB-UCS2-H" isPdfEmbedded="true"/>
+				</textElement>
+				<text><![CDATA[类型]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="44" splitType="Stretch">
+			<textField>
+				<reportElement x="81" y="0" width="90" height="44"/>
+				<textElement>
+					<font pdfFontName="STSong-Light" pdfEncoding="UniGB-UCS2-H" isPdfEmbedded="true"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{subAccountType}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="171" y="0" width="50" height="20"/>
+				<textElement>
+					<font pdfFontName="STSong-Light" pdfEncoding="UniGB-UCS2-H" isPdfEmbedded="true"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{type}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="494" y="0" width="60" height="20"/>
+				<textElement/>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{finalBalance}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="409" y="0" width="85" height="20"/>
+				<textElement/>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{actualAmount}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="303" y="0" width="72" height="20"/>
+				<textElement/>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{dueAmount}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="221" y="0" width="82" height="20"/>
+				<textElement/>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{initialBalance}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="0" y="0" width="81" height="44"/>
+				<textElement>
+					<font pdfFontName="STSong-Light" pdfEncoding="UniGB-UCS2-H" isPdfEmbedded="true"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{dealingUnitShortName}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="45" splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="54" splitType="Stretch">
+			<textField>
+				<reportElement x="197" y="17" width="100" height="20"/>
+				<textElement/>
+				<textFieldExpression class="java.lang.Integer"><![CDATA[$V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageFooter>
+	<summary>
+		<band height="42" splitType="Stretch"/>
+	</summary>
+</jasperReport>

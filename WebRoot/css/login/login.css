@@ -1,0 +1,120 @@
+@CHARSET "UTF-8";
+
+html * {
+	margin: 0;
+	padding: 0;
+}
+
+html { 
+	overflow-x: hidden;
+}
+
+a,input{ 
+	outline: none; 
+	text-decoration: none; 
+}
+a {
+	color: #0653AB;
+}
+a:hover, a:active, a:focus {
+	color:#f60;
+}
+
+img{
+	border:0;
+}
+
+li {
+	list-style:none;
+}
+
+body {
+	font-family:verdana,Arial,Helvetica,sans-serif;
+	text-align: left;
+	font-size: 12px;
+	background:#fafafa;
+}
+
+/**************/
+
+div#jsnote{
+	margin:3% auto auto auto;
+	width:450px;
+	background:#FFD3D4 url("error.gif") no-repeat 18px 18px;
+	border:1px solid #E59D9E;
+	padding:18px 18px 18px 54px;
+}
+
+div#top{
+	margin-left:auto;
+	margin-right:auto;
+	margin-top:6%;
+	position:relative;
+	height:10px;
+	width:546px;
+	background:transparent url("top.png") no-repeat left bottom;
+}
+
+div#box{
+	margin:auto;
+	position:relative;
+	width:546px;
+	table-layout: fixed; 
+	background:transparent url("bg.png") repeat-y ;
+	padding: 15px 0 ;
+}
+div#bottom{
+	margin:auto;
+	position:relative;
+	height:14px;
+	width:546px;
+	background:transparent url("bottom.png") no-repeat ;
+}
+
+#logo{
+	margin-top:-10px;
+	margin-left:30px;
+	margin-bottom: 30px;
+}
+
+div#box div{
+	margin:auto 49px;
+	
+}
+
+span{
+	color:#747474;
+}
+
+div#box div input{
+	background:#fafafa;
+	border:1px solid #eee;
+	font-size:18px;
+	line-height:20px;
+	padding:3px;
+	width:440px;
+	margin:1px 0 20px 0;
+}
+
+img#kaptchaImage{
+	cursor: pointer;
+}
+
+a#submit{
+	float:right;
+	margin-top:-40px;
+	margin-right:-10px;
+	width:102px;
+	height:34px;
+	background:transparent url("login.gif") no-repeat ;
+	cursor: pointer;
+}
+
+a#submit:hover, a#submit:active, a#submit:focus {
+	background:transparent url("login.gif") no-repeat center bottom;
+}
+
+span.errors {
+	color:red;
+	text-indent:10px;
+}

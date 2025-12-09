@@ -1,0 +1,47 @@
+/**
+ * @(#)PartOrderDetailDAOImpl.java  1.0 10/05/12
+ *
+ * Copyright 2010 luyuan-ebike, Inc. All rights reserved.
+ * 
+ */
+package com.luyuan.sys.dao.impl;
+
+import java.util.List;
+
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
+import org.springframework.orm.hibernate3.support.HibernateDaoSupport;
+
+import com.luyuan.sys.dao.PartOrderDetailDAO;
+import com.luyuan.sys.entity.PartOrderDetail;
+
+/**
+ * 
+ * 最终会被注入的PartOrderDetailDAO，实现DAO接口逻辑
+ *
+ * @see com.luyuan.sys.entity.PartOrderDetail
+ * @author gch
+ */
+
+public class PartOrderDetailDAOImpl extends HibernateDaoSupport implements PartOrderDetailDAO {
+	public List<PartOrderDetail> findByOrderId(Object orderId) {
+		return this.findByProperty("orderId", orderId);
+	}
+	
+	//************************************************************************
+	 private List<PartOrderDetail> findByProperty(String propertyName, Object value) {
+	      log.debug("finding PartOrderDetail instance with property: " + propertyName
+	            + ", value: " + value);
+	      try {
+	         String queryString = "from PartOrderDetail as model where model." 
+	         						+ propertyName + "= ?";
+			 return getHibernateTemplate().find(queryString, value);
+	      } catch (RuntimeException re) {
+	         log.error("find by property name failed", re);
+	         throw re;
+	      }
+		}
+	
+	//日志
+	private static final Log log = LogFactory.getLog(PartOrderDetailDAOImpl.class);
+}

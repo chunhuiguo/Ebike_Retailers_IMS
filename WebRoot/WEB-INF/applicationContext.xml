@@ -1,0 +1,289 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans" 
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:aop="http://www.springframework.org/schema/aop"
+	xmlns:tx="http://www.springframework.org/schema/tx"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.5.xsd
+					http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-2.5.xsd
+					http://www.springframework.org/schema/jee http://www.springframework.org/schema/jee/spring-jee-2.5.xsd
+					http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-2.5.xsd"
+	default-lazy-init="true">
+	
+	<bean id="lySMSSessionFactory" class="org.springframework.orm.hibernate3.LocalSessionFactoryBean">
+       
+        <property name="mappingDirectoryLocations">
+            <list>
+				<value>classpath:com/luyuan/info/entity/</value>
+            </list>
+        </property>
+        
+        <property name="hibernateProperties">
+            <props>
+                <prop key="hibernate.dialect">org.hibernate.dialect.SQLServerDialect</prop>
+                <prop key="show_sql">true</prop>
+                <prop key="format_sql">true</prop>
+                <prop key="hibernate.hbm2ddl.auto">update</prop>
+                <prop key="hibernate.jdbc.batch_size">20</prop> 
+                <prop key="hibernate.proxool.pool_alias">lySMSDBPool</prop>  
+        		<prop key="hibernate.proxool.xml">lySMSProxool.xml</prop>  
+        		<prop key="hibernate.connection.provider_class">org.hibernate.connection.ProxoolConnectionProvider</prop>  
+       			<prop key="hibernate.proxool.existing_pool">false</prop> 
+                <prop key="hibernate.connection.autocommit">true </prop>    
+            </props>
+        </property>
+    </bean>
+    
+    <bean id="lySalesSessionFactory" class="org.springframework.orm.hibernate3.LocalSessionFactoryBean">
+       
+        <property name="mappingDirectoryLocations">
+            <list>
+				<value>classpath:com/luyuan/info/entity/</value>
+            </list>
+        </property>
+        
+        <property name="hibernateProperties">
+            <props>
+                <prop key="hibernate.dialect">org.hibernate.dialect.SQLServerDialect</prop>
+                <prop key="show_sql">true</prop>
+                <prop key="format_sql">true</prop>
+                <prop key="hibernate.hbm2ddl.auto">update</prop>
+                <prop key="hibernate.jdbc.batch_size">20</prop> 
+                <prop key="hibernate.proxool.pool_alias">lySalesDBPool</prop>  
+        		<prop key="hibernate.proxool.xml">lySalesProxool.xml</prop>  
+        		<prop key="hibernate.connection.provider_class">org.hibernate.connection.ProxoolConnectionProvider</prop>  
+       			<prop key="hibernate.proxool.existing_pool">false</prop> 
+                <prop key="hibernate.connection.autocommit">true </prop>    
+            </props>
+        </property>
+    </bean>
+	
+	<bean id="lyCRMSessionFactory" class="org.springframework.orm.hibernate3.LocalSessionFactoryBean">
+       
+        <property name="mappingDirectoryLocations">
+            <list>
+				<value>classpath:com/luyuan/info/entity/</value>
+            </list>
+        </property>
+        
+        <property name="hibernateProperties">
+            <props>
+                <prop key="hibernate.dialect">org.hibernate.dialect.SQLServerDialect</prop>
+                <prop key="show_sql">true</prop>
+                <prop key="format_sql">true</prop>
+                <prop key="hibernate.hbm2ddl.auto">update</prop>
+                <prop key="hibernate.jdbc.batch_size">20</prop> 
+                <prop key="hibernate.proxool.pool_alias">lyCRMDBPool</prop>  
+        		<prop key="hibernate.proxool.xml">lyCRMProxool.xml</prop>  
+        		<prop key="hibernate.connection.provider_class">org.hibernate.connection.ProxoolConnectionProvider</prop>  
+       			<prop key="hibernate.proxool.existing_pool">false</prop> 
+                <prop key="hibernate.connection.autocommit">true </prop>    
+            </props>
+        </property>
+    </bean>
+	
+	<bean id="publicSessionFactory" class="org.springframework.orm.hibernate3.LocalSessionFactoryBean">
+       
+        <property name="mappingDirectoryLocations">
+            <list>
+				<value>classpath:com/luyuan/sys/entity/</value>
+            </list>
+        </property>
+        
+        <property name="hibernateProperties">
+            <props>
+                <prop key="hibernate.dialect">org.hibernate.dialect.SQLServerDialect</prop>
+                <prop key="show_sql">true</prop>
+                <prop key="format_sql">true</prop>
+                <prop key="hibernate.hbm2ddl.auto">update</prop>
+                <prop key="hibernate.jdbc.batch_size">20</prop> 
+                <prop key="hibernate.proxool.pool_alias">publicDBPool</prop>  
+        		<prop key="hibernate.proxool.xml">publicProxool.xml</prop>  
+        		<prop key="hibernate.connection.provider_class">org.hibernate.connection.ProxoolConnectionProvider</prop>  
+       			<prop key="hibernate.proxool.existing_pool">false</prop> 
+                <prop key="hibernate.connection.autocommit">true </prop>    
+            </props>
+        </property>
+    </bean>
+	
+	<bean id="lypsiSessionFactory" class="org.springframework.orm.hibernate3.LocalSessionFactoryBean">
+       
+        <property name="mappingDirectoryLocations">
+            <list>
+				<value>classpath:com/luyuan/deal/entity/</value>
+				<value>classpath:com/luyuan/info/entity/</value>
+				<value>classpath:com/luyuan/money/entity/</value>
+				<value>classpath:com/luyuan/stock/entity/</value>
+				<value>classpath:com/luyuan/report/entity/</value>
+            </list>
+        </property>
+        
+        <property name="hibernateProperties">
+            <props>
+                <prop key="hibernate.dialect">org.hibernate.dialect.SQLServerDialect</prop>
+                <prop key="show_sql">true</prop>
+                <prop key="format_sql">true</prop>
+                <prop key="hibernate.hbm2ddl.auto">update</prop>
+                <prop key="hibernate.jdbc.batch_size">20</prop> 
+                <prop key="hibernate.proxool.pool_alias">DBPool</prop>  
+        		<prop key="hibernate.proxool.xml">proxool.xml</prop>  
+        		<prop key="hibernate.connection.provider_class">org.hibernate.connection.ProxoolConnectionProvider</prop>  
+       			<prop key="hibernate.proxool.existing_pool">false</prop> 
+                <prop key="hibernate.connection.autocommit">true </prop>    
+            </props>
+        </property>
+    </bean>
+	
+	
+	
+	<!-- 事务配置 -->
+	<bean id="txPSIManager" class="org.springframework.orm.hibernate3.HibernateTransactionManager">
+		<property name="sessionFactory" ref="lypsiSessionFactory" />	
+	</bean>	
+	<bean id="txPSIInterceptor"  
+        class="org.springframework.transaction.interceptor.TransactionInterceptor">  
+        <property name="transactionManager" ref="txPSIManager" />  
+        <!-- 事务属性 -->  
+        <property name="transactionAttributes">  
+            <props>
+            	<prop key="save*">PROPAGATION_REQUIRED</prop>  
+                <prop key="update*">PROPAGATION_REQUIRED</prop>              
+                <prop key="delete*">PROPAGATION_REQUIRED</prop>   
+                <prop key="*">PROPAGATION_REQUIRED,readOnly</prop>
+            </props>  
+        </property>  
+    </bean>      
+    <bean class="org.springframework.aop.framework.autoproxy.BeanNameAutoProxyCreator">  
+        <property name="beanNames">  
+            <list>  
+                <value>*Biz</value>
+            </list>  
+        </property>  
+        <property name="interceptorNames">  
+            <list>  
+                <value>txPSIInterceptor</value>  
+            </list>  
+        </property>  
+    </bean>  
+    
+    
+    <!-- 
+    <bean id="txServiceManager" class="org.springframework.orm.hibernate3.HibernateTransactionManager">
+		<property name="sessionFactory" ref="publicSessionFactory" />	
+	</bean>	
+	<bean id="txServiceInterceptor"  
+        class="org.springframework.transaction.interceptor.TransactionInterceptor">  
+        <property name="transactionManager" ref="txServiceManager" />  
+        <property name="transactionAttributes">  
+            <props>
+            	<prop key="save*">PROPAGATION_REQUIRED</prop>  
+                <prop key="update*">PROPAGATION_REQUIRED</prop>              
+                <prop key="delete*">PROPAGATION_REQUIRED</prop>   
+                <prop key="*">PROPAGATION_REQUIRED,readOnly</prop>
+            </props>  
+        </property>  
+    </bean>      
+    <bean class="org.springframework.aop.framework.autoproxy.BeanNameAutoProxyCreator">  
+        <property name="beanNames">  
+            <list>  
+                <value>*Biz</value>
+            </list>  
+        </property>  
+        <property name="interceptorNames">  
+            <list>  
+                <value>txServiceInterceptor</value>  
+            </list>  
+        </property>  
+    </bean> 
+    
+    
+    <bean id="txCRMManager" class="org.springframework.orm.hibernate3.HibernateTransactionManager">		
+		<property name="sessionFactory" ref="lyCRMSessionFactory" />		
+	</bean>	
+	<bean id="txCRMInterceptor"  
+        class="org.springframework.transaction.interceptor.TransactionInterceptor">  
+        <property name="transactionManager" ref="txCRMManager" />  
+        <property name="transactionAttributes">  
+            <props>
+            	<prop key="save*">PROPAGATION_REQUIRED</prop>  
+                <prop key="update*">PROPAGATION_REQUIRED</prop>              
+                <prop key="delete*">PROPAGATION_REQUIRED</prop>   
+                <prop key="*">PROPAGATION_REQUIRED,readOnly</prop>
+            </props>  
+        </property>  
+    </bean>      
+    <bean class="org.springframework.aop.framework.autoproxy.BeanNameAutoProxyCreator">  
+        <property name="beanNames">  
+            <list>  
+                <value>*Biz</value>
+            </list>  
+        </property>  
+        <property name="interceptorNames">  
+            <list>  
+                <value>txCRMInterceptor</value>  
+            </list>  
+        </property>  
+    </bean> 
+    
+    
+    <bean id="txSalesManager" class="org.springframework.orm.hibernate3.HibernateTransactionManager">		
+		<property name="sessionFactory" ref="lySalesSessionFactory" />	
+	</bean>	
+	<bean id="txSalesInterceptor"  
+        class="org.springframework.transaction.interceptor.TransactionInterceptor">  
+        <property name="transactionManager" ref="txSalesManager" />  
+        <property name="transactionAttributes">  
+            <props>
+            	<prop key="save*">PROPAGATION_REQUIRED</prop>  
+                <prop key="update*">PROPAGATION_REQUIRED</prop>              
+                <prop key="delete*">PROPAGATION_REQUIRED</prop>   
+                <prop key="*">PROPAGATION_REQUIRED,readOnly</prop>
+            </props>  
+        </property>  
+    </bean>      
+    <bean class="org.springframework.aop.framework.autoproxy.BeanNameAutoProxyCreator">  
+        <property name="beanNames">  
+            <list>  
+                <value>*Biz</value>
+            </list>  
+        </property>  
+        <property name="interceptorNames">  
+            <list>  
+                <value>txSalesInterceptor</value>  
+            </list>  
+        </property>  
+    </bean> 
+    
+    
+    <bean id="txSMSManager" class="org.springframework.orm.hibernate3.HibernateTransactionManager">
+		<property name="sessionFactory" ref="lySMSSessionFactory" />	
+	</bean>	
+	<bean id="txSMSInterceptor"  
+        class="org.springframework.transaction.interceptor.TransactionInterceptor">  
+        <property name="transactionManager" ref="txSMSManager" />  
+        <property name="transactionAttributes">  
+            <props>
+            	<prop key="save*">PROPAGATION_REQUIRED</prop>  
+                <prop key="update*">PROPAGATION_REQUIRED</prop>              
+                <prop key="delete*">PROPAGATION_REQUIRED</prop>   
+                <prop key="*">PROPAGATION_REQUIRED,readOnly</prop>
+            </props>  
+        </property>  
+    </bean>      
+    <bean class="org.springframework.aop.framework.autoproxy.BeanNameAutoProxyCreator">  
+        <property name="beanNames">  
+            <list>  
+                <value>*Biz</value>
+            </list>  
+        </property>  
+        <property name="interceptorNames">  
+            <list>  
+                <value>txSMSInterceptor</value>  
+            </list>  
+        </property>  
+    </bean> 
+	 -->
+	
+	 
+	
+</beans>
